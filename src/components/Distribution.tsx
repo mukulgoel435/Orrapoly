@@ -21,6 +21,31 @@ const Container = styled.div`
   text-align: center;
 `;
 
+const Label = styled.p`
+  margin-top: 1rem;
+  font-size: 1.5rem;
+  font-weight: 700;
+  font-family: 'Poppins', sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  background: linear-gradient(45deg, #ff6ec4, #7873f5);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+  animation: fadeInUp 0.8s ease-in-out;
+
+  @keyframes fadeInUp {
+    from {
+      opacity: 0;
+      transform: translateY(10px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+`;
+
 const Heading = styled.h2`
   font-size: 2.5rem;
   color: #1f1f1f;
@@ -53,12 +78,6 @@ const Image = styled.img`
   border-radius: 16px;
 `;
 
-const Label = styled.p`
-  font-size: 1.2rem;
-  margin-top: 1rem;
-  font-weight: bold;
-  color: #1f1f1f;
-`;
 
 const locations = [
   { name: 'Haridwar', image: haridwar },

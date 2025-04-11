@@ -17,14 +17,17 @@ const StyledContainer = styled.div`
   background-size: cover;
   background-position: center;
   color: black;
-  height: 100vh;
+  height: 93vh;
   text-align: center;
+  position: relative;
 `;
 
 const Content = styled.div`
   max-width: 600px;
+  width: 500px;
+  height: 450px;
   padding: 2rem;
-  background-color: rgba(255, 255, 255, 0.8); /* Optional: Add a slight background for contrast */
+  background-color: rgba(255, 255, 255, 0.8);
   border-radius: 12px;
 `;
 
@@ -52,6 +55,18 @@ const HeroContent = styled(motion.div)`
     margin-top: 1rem;
     opacity: 0.8;
     font-weight: 300;
+    min-height: 2rem;
+  }
+`;
+
+const Cursor = styled.span`
+  font-weight: bold;
+  animation: blink 1s step-start infinite;
+
+  @keyframes blink {
+    50% {
+      opacity: 0;
+    }
   }
 `;
 
@@ -75,7 +90,7 @@ const ScrollIndicator = styled(motion.div)`
   opacity: 0.7;
   cursor: pointer;
   pointer-events: auto;
-  
+
   .arrow {
     width: 20px;
     height: 20px;
@@ -84,7 +99,7 @@ const ScrollIndicator = styled(motion.div)`
     transform: rotate(45deg);
     animation: bounce 2s infinite;
   }
-  
+
   @keyframes bounce {
     0%, 20%, 50%, 80%, 100% {
       transform: translateY(0) rotate(45deg);
@@ -98,23 +113,58 @@ const ScrollIndicator = styled(motion.div)`
   }
 `;
 
-// Main Landing Page Component
 const LandingPage: React.FC = () => {
   const [scrollY, setScrollY] = useState(0);
-  
+  const [typedText, setTypedText] = useState('');
+  const [index, setIndex] = useState(0);
+  const [charIdx, setCharIdx] = useState(0);
+  const [isDeleting, setIsDeleting] = useState(false);
+
+  const phrases = [
+    'Precision in Every Strand, Excellence in Every Roll',
+    'Crafting Threads with Passion & Purpose',
+    'Delivering Quality You Can Feel',
+  ];
+
+  useEffect(() => {
+    const currentPhrase = phrases[index];
+    const speed = isDeleting ? 30 : 80;
+
+    const timeout = setTimeout(() => {
+      if (isDeleting) {
+        setTypedText(currentPhrase.substring(0, charIdx - 1));
+        setCharIdx(charIdx - 1);
+      } else {
+        setTypedText(currentPhrase.substring(0, charIdx + 1));
+        setCharIdx(charIdx + 1);
+      }
+
+      if (!isDeleting && charIdx === currentPhrase.length) {
+        setTimeout(() => setIsDeleting(true), 1000); 
+      }
+
+      if (isDeleting && charIdx === 0) {
+        setIsDeleting(false);
+        setIndex((prev) => (prev + 1) % phrases.length);
+      }
+    }, speed);
+
+    return () => clearTimeout(timeout);
+  }, [charIdx, isDeleting]);
+
   useEffect(() => {
     const handleScroll = () => {
       setScrollY(window.scrollY);
     };
-    
+
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
-  
+
   const handleScrollDown = () => {
     window.scrollTo({
       top: window.innerHeight,
-      behavior: 'smooth'
+      behavior: 'smooth',
     });
   };
 
@@ -128,28 +178,31 @@ const LandingPage: React.FC = () => {
           transition={{ duration: 1 }}
         >
           <h1>ORRAPOLY</h1>
-          <p>Precision in Every Strand, Excellence in Every Roll</p>
+          <p>
+            {typedText}
+            <Cursor>|</Cursor>
+          </p>
           <BrandTagline
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 0.5, duration: 1 }}
           >
-            Threads of Tomorrow, Delivered Today          
-            </BrandTagline>
+            Threads of Tomorrow, Delivered Today
+          </BrandTagline>
         </HeroContent>
       </Content>
-      
+
       <ScrollIndicator
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ delay: 1.5, duration: 1 }}
         onClick={handleScrollDown}
       >
-        <span style={{color:"black"}}>Scroll to explore</span>
+        <span style={{ color: 'black' }}>Scroll to explore</span>
         <div className="arrow" />
       </ScrollIndicator>
     </StyledContainer>
   );
 };
 
-export default LandingPage; 
+export default LandingPage;
