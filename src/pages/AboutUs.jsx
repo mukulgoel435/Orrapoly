@@ -3,11 +3,12 @@ import React from 'react';
 import styled from 'styled-components';
 import NavbarWithSidebar from '../components/NavbarWithSidebar';
 import PageBanner from '../components/PageBanner';
-
+import Footer from '../components/Footer';
 const AboutContainer = styled.div`
   min-height: 100vh;
   background-color: #f3ede3;
   color: white;
+  overflow-x: hidden;
 `;
 
 const Heading = styled.h2`
@@ -55,7 +56,7 @@ const AboutUS = () => {
           With years of industry experience, we understand the importance of precision and consistency. That’s why all our threads go through strict quality checks and come in a wide range of shades and textures. Whether you're looking for bulk supply or customized orders, <strong>Orrapoly</strong> stands ready to weave excellence into every strand.
         </Paragraph>
       </AboutContent>
-
+      <Footer />
         
     </AboutContainer>
   );

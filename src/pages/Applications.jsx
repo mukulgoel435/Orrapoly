@@ -8,7 +8,7 @@ import furniture from '../assets/Applications/FurnitureUpholstery.jpg';
 import industrial from '../assets/Applications/IndustrialSewing.webp';
 import embroidery from '../assets/Applications/EmbroideryWork.jpg';
 import PageBanner from '../components/PageBanner';
-
+import Footer from '../components/Footer';
 // Sample Application Data
 const applications = [
   {
@@ -130,6 +130,7 @@ const Applications = () => {
           ))}
         </Grid>
       </Section>
+      <Footer />
     </PageContainer>
   );
 };

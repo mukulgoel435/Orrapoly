@@ -4,7 +4,7 @@ import styled from 'styled-components';
 // Import your images
 import haridwar from '../assets/haridwar.jpeg';
 import rishikesh from '../assets/Rishkesh.jpeg';
-import roorkee from '../assets/Roorkee.jpeg';
+import roorkee from '../assets/roorkee.jpg';
 import mirzapur from '../assets/Mirzapur.jpg';
 import fazilnagar from '../assets/Fazilnagar.jpg';
 import muzaffarnagar from '../assets/Muzaffarnagar.jpg';

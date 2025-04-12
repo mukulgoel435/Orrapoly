@@ -171,9 +171,9 @@ const NavbarWithSidebar: React.FC = () => {
           Applications
         </Link>
         <a
-          href="#contact"
-          onClick={() => { setActiveLink('#contact'); setSidebarOpen(false); }}
-          className={activeLink === '#contact' ? 'active' : ''}
+          href="/contact"
+          onClick={() => { setActiveLink('/contact'); setSidebarOpen(false); }}
+          className={activeLink === '/contact' ? 'active' : ''}
         >
           Contact Us
         </a>

@@ -2,17 +2,24 @@ import React, { useState } from 'react';
 import styled from 'styled-components';
 import NavbarWithSidebar from '../components/NavbarWithSidebar';
 import PageBanner from '../components/PageBanner';
-
+import Footer from '../components/Footer';
 const PageContainer = styled.div`
   background-color: #f3ede3;
   min-height: 100vh;
+  overflow-x: hidden;
 `;
 
 const ContactContainer = styled.div`
-  padding: 3rem 1rem;
+  padding: 2rem 1rem;
+
+  @media (max-width: 480px) {
+    padding: 1.5rem 0.5rem;
+  }
+
   background-color: #f3ede3;
   text-align: center;
 `;
+
 
 const ContactButtons = styled.div`
   display: flex;
@@ -31,6 +38,13 @@ const ContactButton = styled.a`
   font-weight: bold;
   font-size: 1rem;
   transition: background 0.3s ease;
+  text-align: center;
+  min-width: 200px;
+
+  @media (max-width: 480px) {
+    width: 100%; // ✅ Full width for small screens
+    padding: 1rem;
+  }
 
   &:hover {
     background-color: #1eb94c;
@@ -44,6 +58,7 @@ const ContactButton = styled.a`
     }
   }
 `;
+
 
 const ContactForm = styled.form`
   max-width: 600px;
@@ -59,7 +74,13 @@ const Label = styled.label`
   display: block;
   font-weight: 600;
   margin-bottom: 0.5rem;
+  font-size: 1rem;
+
+  @media (max-width: 480px) {
+    font-size: 0.9rem;
+  }
 `;
+
 
 const Input = styled.input`
   width: 100%;
@@ -154,6 +175,7 @@ const Contact = () => {
           <SubmitButton type="submit">Send Feedback</SubmitButton>
         </ContactForm>
       </ContactContainer>
+      <Footer />
     </PageContainer>
   );
 };

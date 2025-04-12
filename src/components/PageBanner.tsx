@@ -9,16 +9,16 @@ interface PageBannerProps {
 
 const BannerWrapper = styled.div`
   background-image: url(${BannerImage});
-  background-size: cover;
   background-position: center;
   height: 40vh;
   width: 100%;
   margin-top: 60px;
+  box-sizing: border-box; /* ✅ Fixes width + padding issue */
+  padding: 0px ;
   display: flex;
   justify-content: center;
   align-items: center;
   text-align: center;
-  padding: 0 1rem;
 
   @media (max-width: 768px) {
     height: 30vh;

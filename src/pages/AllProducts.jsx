@@ -13,6 +13,7 @@ import product8 from '../assets/Products/400_mtr_3_ply.png';
 import product9 from '../assets/Products/1000_mtr_3_ply.png'
 import product10 from '../assets/Products/300_mtr_2_ply.png'
 import PageBanner from '../components/PageBanner';
+import Footer from '../components/Footer';
 
 const ProductsContainer = styled.div`
   min-height: 100vh;
@@ -121,6 +122,7 @@ const AllProducts = () => {
             ))}
           </ProductGrid>
         </ProductContainer>
+        <Footer />
     </ProductsContainer>
   );
 };
