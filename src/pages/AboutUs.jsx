@@ -1,66 +1,13 @@
 // src/pages/Products.tsx
 import React from 'react';
 import styled from 'styled-components';
-import ShadeCard from '../components/ShadeCard';
-import BannerImage from '../assets/ThreadBanner.png';  
 import NavbarWithSidebar from '../components/NavbarWithSidebar';
-import product1 from '../assets/Products/10000_mtr_2_ply.png';
-import product2 from '../assets/Products/2000_mtr_2_ply.png';
-import product3 from '../assets/Products/5000_mtr_3_ply.png';
-import product4 from '../assets/Products/20_tube_180_mtr_2_ply.png';
-import product5 from '../assets/Products/100_tube_180_mtr_2_ply.png';
-import product6 from '../assets/Products/130_mtr_3_ply.jpeg';
-import product7 from '../assets/Products/800_mtr.png';
-import product8 from '../assets/Products/400_mtr_3_ply.png';
-import product9 from '../assets/Products/1000_mtr_3_ply.png'
-import product10 from '../assets/Products/300_mtr_2_ply.png'
+import PageBanner from '../components/PageBanner';
 
-// Styled components
 const AboutContainer = styled.div`
   min-height: 100vh;
   background-color: #f3ede3;
   color: white;
-`;
-
-const Banner = styled.div`
-  background-image: url(${BannerImage});
-  background-size: cover;
-  background-position: center;
-  height: 40vh;
-  width: 100%;
-  margin-top: 60px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  text-align: center; // important for multiline heading
-  padding: 0 1rem;
-
-  @media (max-width: 768px) {
-    height: 30vh;
-  }
-
-  @media (max-width: 480px) {
-    height: 18vh;
-  }
-`;
-
-const BannerHeading = styled.h2`
-  font-size: 3rem;
-  color: black;
-  font-family: 'Poppins', sans-serif;
-  font-weight: 700;
-  margin: 0;
-  transform: translateY(-70%);
-  
-  @media (max-width: 768px) {
-    font-size: 2rem;
-    transform: translateY(-70%);
-  }
-
-  @media (max-width: 480px) {
-    font-size: 2rem;
-    transform: translateY(-70%);
-  }
 `;
 
 const Heading = styled.h2`
@@ -86,17 +33,11 @@ const Paragraph = styled.p`
   color: #333;
 `;
 
-
 const AboutUS = () => {
   return (
     <AboutContainer>
-      {/* Navbar */}
       <NavbarWithSidebar />
-
-      {/* Banner */}
-      <Banner>
-        <BannerHeading>About Us</BannerHeading>
-      </Banner>
+      <PageBanner headingText="About Us" />
 
       <AboutContent>
         <Heading>Who We Are</Heading>

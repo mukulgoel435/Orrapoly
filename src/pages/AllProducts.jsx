@@ -1,8 +1,6 @@
 // src/pages/Products.tsx
 import React from 'react';
 import styled from 'styled-components';
-import ShadeCard from '../components/ShadeCard';
-import BannerImage from '../assets/ThreadBanner.png';  
 import NavbarWithSidebar from '../components/NavbarWithSidebar';
 import product1 from '../assets/Products/10000_mtr_2_ply.png';
 import product2 from '../assets/Products/2000_mtr_2_ply.png';
@@ -14,91 +12,18 @@ import product7 from '../assets/Products/800_mtr.png';
 import product8 from '../assets/Products/400_mtr_3_ply.png';
 import product9 from '../assets/Products/1000_mtr_3_ply.png'
 import product10 from '../assets/Products/300_mtr_2_ply.png'
+import PageBanner from '../components/PageBanner';
 
-// Styled components
 const ProductsContainer = styled.div`
   min-height: 100vh;
   background-color: #000000;
   color: white;
 `;
 
-const Banner = styled.div`
-  background-image: url(${BannerImage});
-  background-size: cover;
-  background-position: center;
-  height: 40vh;
-  width: 100%;
-  margin-top: 60px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  text-align: center; // important for multiline heading
-  padding: 0 1rem;
-
-  @media (max-width: 768px) {
-    height: 30vh;
-  }
-
-  @media (max-width: 480px) {
-    height: 18vh;
-  }
-`;
-
-const BannerHeading = styled.h2`
-  font-size: 3rem;
-  color: black;
-  font-family: 'Poppins', sans-serif;
-  font-weight: 700;
-  margin: 0;
-  transform: translateY(-70%);
-  
-  @media (max-width: 768px) {
-    font-size: 2rem;
-    transform: translateY(-70%);
-  }
-
-  @media (max-width: 480px) {
-    font-size: 2rem;
-    transform: translateY(-70%);
-  }
-`;
-
-
-
-const Header = styled.div`
-  text-align: center;
-  padding: 4rem 2rem;
-`;
-
-const Title = styled.h1`
-  font-size: 3rem;
-  margin-bottom: 1rem;
-  font-family: 'Poppins', sans-serif;
-`;
-
-const Description = styled.p`
-  font-size: 1.2rem;
-  color: #cccccc;
-  max-width: 800px;
-  margin: 0 auto;
-`;
-
-const ProductSection = styled.section`
-  padding: 1rem;
-`;
-
 const ProductContainer = styled.div`
   padding: 2rem 1rem;
   background: #f3ede3;
   text-align: center;
-`;
-
-const Heading = styled.h2`
-  font-size: 2.8rem;
-  font-weight: bold;
-  margin-bottom: 2rem;
-  font-family: 'Poppins', sans-serif;
-  color: #1f1f1f;
 `;
 
 const ProductGrid = styled.div`
@@ -142,7 +67,6 @@ const Img = styled.img`
   object-fit: contain;
 `;
 
-
 const ProductName = styled.div`
   padding: 1rem;
   font-weight: 600;
@@ -165,8 +89,6 @@ const ProductPrice = styled.div`
   margin-top: 0.5rem;
 `;
 
-
-
 const products = [
   { name: '10000 MTR 2-Ply', image: product1 },
   { name: '2000 MTR 2-Ply', image: product2 },
@@ -183,15 +105,9 @@ const products = [
 const AllProducts = () => {
   return (
     <ProductsContainer>
-      {/* Navbar */}
       <NavbarWithSidebar />
+      <PageBanner headingText="Explore Our Products" />
 
-      {/* Banner */}
-      <Banner>
-        <BannerHeading>Explore Our Products</BannerHeading>
-      </Banner>
-
-     
         <ProductContainer>
           <ProductGrid>
             {products.map((product, index) => (
@@ -200,7 +116,6 @@ const AllProducts = () => {
                 <Img src={product.image} alt={product.name} />
               </ProductImage>
                 <ProductName>{product.name}</ProductName>
-                {/* <ProductPrice>Rs. 499</ProductPrice> */} {/* Uncomment if pricing is added */}
                 </ProductCard>
             
             ))}

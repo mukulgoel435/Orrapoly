@@ -1,13 +1,13 @@
 import React from 'react';
 import styled from 'styled-components';
 import NavbarWithSidebar from '../components/NavbarWithSidebar';
-import BannerImage from '../assets/ThreadBanner.png';
 import garment from '../assets/Applications/GarmentStiching.jpg';
 import footwear from '../assets/Applications/FootwearStiching.jpg';
 import automotive from '../assets/Applications/AutomotiveUpholstery.jpg';
 import furniture from '../assets/Applications/FurnitureUpholstery.jpg';
 import industrial from '../assets/Applications/IndustrialSewing.webp';
 import embroidery from '../assets/Applications/EmbroideryWork.jpg';
+import PageBanner from '../components/PageBanner';
 
 // Sample Application Data
 const applications = [
@@ -46,47 +46,6 @@ const applications = [
 const PageContainer = styled.div`
   background-color: #f3ede3;
   min-height: 100vh;
-`;
-
-const Banner = styled.div`
-  background-image: url(${BannerImage});
-  background-size: cover;
-  background-position: center;
-  height: 40vh;
-  width: 100%;
-  margin-top: 60px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  text-align: center; // important for multiline heading
-  padding: 0 1rem;
-
-  @media (max-width: 768px) {
-    height: 30vh;
-  }
-
-  @media (max-width: 480px) {
-    height: 18vh;
-  }
-`;
-
-const BannerHeading = styled.h2`
-  font-size: 3rem;
-  color: black;
-  font-family: 'Poppins', sans-serif;
-  font-weight: 700;
-  margin: 0;
-  transform: translateY(-70%);
-  
-  @media (max-width: 768px) {
-    font-size: 2rem;
-    transform: translateY(-30%);
-  }
-
-  @media (max-width: 480px) {
-    font-size: 2rem;
-    transform: translateY(-30%);
-  }
 `;
 
 const Section = styled.div`
@@ -159,10 +118,7 @@ const Applications = () => {
   return (
     <PageContainer>
       <NavbarWithSidebar />
-      <Banner>
-        <BannerHeading>Applications of Our Thread</BannerHeading>
-      </Banner>
-
+      <PageBanner headingText="Applications of Our Thread" />
       <Section>
         <Grid>
           {applications.map((app, idx) => (
