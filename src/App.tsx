@@ -8,6 +8,8 @@ import Footer from './components/Footer';
 import ShadeCard from './components/ShadeCard';
 import AllProducts from '../src/pages/AllProducts';
 import AboutUS from '../src/pages/AboutUs';
+import Applications from '../src/pages/Applications';
+import Contact from '../src/pages/Contact';
 const AppContainer = styled.div`
   font-family: 'Arial, sans-serif';
   color: #333;
@@ -30,6 +32,8 @@ const App = () => {
         } />
         <Route path="/products" element={<AllProducts />} />
         <Route path="/aboutus" element={<AboutUS />} />
+        <Route path="/applications" element={<Applications />} />
+        <Route path="/contact" element={<Contact />} />
       </Routes>
     </Router>
   );

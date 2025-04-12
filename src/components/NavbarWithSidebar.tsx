@@ -1,4 +1,3 @@
-// components/NavbarWithSidebar.tsx
 import React, { useState } from 'react';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
@@ -33,6 +32,10 @@ const Navbar = styled.nav`
       transition: color 0.3s;
 
       &:hover {
+        color: #ffd700;
+      }
+
+      &.active {
         color: #ffd700;
       }
     }
@@ -79,8 +82,13 @@ const Sidebar = styled.div<{ open: boolean }>`
     margin: 1rem 0;
     text-decoration: none;
     font-size: 1.2rem;
+    transition: color 0.3s;
 
     &:hover {
+      color: #ffd700;
+    }
+
+    &.active {
       color: #ffd700;
     }
   }
@@ -95,6 +103,7 @@ const Logo = styled.div`
 
 const NavbarWithSidebar: React.FC = () => {
   const [sidebarOpen, setSidebarOpen] = useState(false);
+  const [activeLink, setActiveLink] = useState<string>('');
 
   return (
     <>
@@ -105,20 +114,69 @@ const NavbarWithSidebar: React.FC = () => {
           </Link>
         </Logo>
         <div className="menu">
-        <Link to="/aboutus" style={{ fontSize: '1.2rem', fontWeight: 'bold', textDecoration: 'none', color: 'white' }}>About Us</Link>
-          <Link to="/products" style={{ fontSize: '1.2rem', fontWeight: 'bold', textDecoration: 'none', color: 'white' }}>Products</Link>
-          <a href="#application" style={{ fontSize: '1.2rem', fontWeight: 'bold' }}>Application</a>
-          <a href="#contact" style={{ fontSize: '1.2rem', fontWeight: 'bold' }}>Contact Us</a>
+          <Link
+            to="/aboutus"
+            onClick={() => setActiveLink('/aboutus')}
+            className={activeLink === '/aboutus' ? 'active' : ''}
+          >
+            About Us
+          </Link>
+          <Link
+            to="/products"
+            onClick={() => setActiveLink('/products')}
+            className={activeLink === '/products' ? 'active' : ''}
+          >
+            Products
+          </Link>
+          <Link
+            to="/applications"
+            onClick={() => setActiveLink('/applications')}
+            className={activeLink === '/applications' ? 'active' : ''}
+          >
+            Applications
+          </Link>
+            
+          <Link
+            to="/contact"
+            onClick={() => setActiveLink('/contact')}
+            className={activeLink === '/contact' ? 'active' : ''}
+          >
+            Contact
+          </Link>
         </div>
         <div className="hamburger" onClick={() => setSidebarOpen(true)}>☰</div>
       </Navbar>
 
       <Sidebar open={sidebarOpen}>
         <div className="close" onClick={() => setSidebarOpen(false)}>×</div>
-        <Link to="/aboutus" onClick={() => setSidebarOpen(false)} style={{ color: 'white', textDecoration: 'none' }}>About US</Link>
-        <Link to="/products" onClick={() => setSidebarOpen(false)} style={{ color: 'white', textDecoration: 'none' }}>Products</Link>
-        <a href="#application" onClick={() => setSidebarOpen(false)}>Application</a>
-        <a href="#contact" onClick={() => setSidebarOpen(false)}>Contact Us</a>
+        <Link
+          to="/aboutus"
+          onClick={() => { setActiveLink('/aboutus'); setSidebarOpen(false); }}
+          className={activeLink === '/aboutus' ? 'active' : ''}
+        >
+          About Us
+        </Link>
+        <Link
+          to="/products"
+          onClick={() => { setActiveLink('/products'); setSidebarOpen(false); }}
+          className={activeLink === '/products' ? 'active' : ''}
+        >
+          Products
+        </Link>
+        <Link
+          to="/applications"
+          onClick={() => { setActiveLink('/applications'); setSidebarOpen(false); }}
+          className={activeLink === '/applications' ? 'active' : ''}
+        >
+          Applications
+        </Link>
+        <a
+          href="#contact"
+          onClick={() => { setActiveLink('#contact'); setSidebarOpen(false); }}
+          className={activeLink === '#contact' ? 'active' : ''}
+        >
+          Contact Us
+        </a>
       </Sidebar>
     </>
   );

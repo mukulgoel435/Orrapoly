@@ -95,7 +95,7 @@ const AboutUS = () => {
 
       {/* Banner */}
       <Banner>
-        <BannerHeading>About US</BannerHeading>
+        <BannerHeading>About Us</BannerHeading>
       </Banner>
 
       <AboutContent>
