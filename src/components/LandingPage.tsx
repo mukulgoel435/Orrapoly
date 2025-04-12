@@ -5,9 +5,10 @@ import { motion } from 'framer-motion';
 import styled from 'styled-components';
 import logo from '../assets/orrapolylogo.png';
 import background from '../assets/thread-background.jpg';
-import ThreadModel from './ThreadModel';
+import { Link } from 'react-router-dom';
+import NavbarWithSidebar from './NavbarWithSidebar';
 
-// Styled Component
+// Styled Components
 const StyledContainer = styled.div`
   display: flex;
   align-items: center;
@@ -29,6 +30,7 @@ const Content = styled.div`
   padding: 2rem;
   background-color: rgba(255, 255, 255, 0.8);
   border-radius: 12px;
+  z-index: 1;
 `;
 
 const LogoImage = styled.img`
@@ -119,6 +121,7 @@ const LandingPage: React.FC = () => {
   const [index, setIndex] = useState(0);
   const [charIdx, setCharIdx] = useState(0);
   const [isDeleting, setIsDeleting] = useState(false);
+  const [sidebarOpen, setSidebarOpen] = useState(false);
 
   const phrases = [
     'Precision in Every Strand, Excellence in Every Roll',
@@ -140,7 +143,7 @@ const LandingPage: React.FC = () => {
       }
 
       if (!isDeleting && charIdx === currentPhrase.length) {
-        setTimeout(() => setIsDeleting(true), 1000); 
+        setTimeout(() => setIsDeleting(true), 1000);
       }
 
       if (isDeleting && charIdx === 0) {
@@ -169,39 +172,43 @@ const LandingPage: React.FC = () => {
   };
 
   return (
-    <StyledContainer>
-      <Content>
-        <LogoImage src={logo} alt="Orrapoly Logo" />
-        <HeroContent
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 1 }}
-        >
-          <h1>ORRAPOLY</h1>
-          <p>
-            {typedText}
-            <Cursor>|</Cursor>
-          </p>
-          <BrandTagline
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 0.5, duration: 1 }}
-          >
-            Threads of Tomorrow, Delivered Today
-          </BrandTagline>
-        </HeroContent>
-      </Content>
+    <>
+      <NavbarWithSidebar />
 
-      <ScrollIndicator
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ delay: 1.5, duration: 1 }}
-        onClick={handleScrollDown}
-      >
-        <span style={{ color: 'black' }}>Scroll to explore</span>
-        <div className="arrow" />
-      </ScrollIndicator>
-    </StyledContainer>
+      <StyledContainer>
+        <Content>
+          <LogoImage src={logo} alt="Orrapoly Logo" />
+          <HeroContent
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 1 }}
+          >
+            <h1>ORRAPOLY</h1>
+            <p>
+              {typedText}
+              <Cursor>|</Cursor>
+            </p>
+            <BrandTagline
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ delay: 0.5, duration: 1 }}
+            >
+              Threads of Tomorrow, Delivered Today
+            </BrandTagline>
+          </HeroContent>
+        </Content>
+
+        <ScrollIndicator
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 1.5, duration: 1 }}
+          onClick={handleScrollDown}
+        >
+          <span style={{ color: 'black' }}>Scroll to explore</span>
+          <div className="arrow" />
+        </ScrollIndicator>
+      </StyledContainer>
+    </>
   );
 };
 

@@ -1,12 +1,12 @@
 // src/components/Products.tsx
 import React from 'react';
 import styled, { keyframes } from 'styled-components';
+import { Link } from 'react-router-dom';
 import product1 from '../assets/Products/10000_mtr_2_ply.png'
 import product2 from '../assets/Products/2000_mtr_2_ply.png'
 import product3 from '../assets/Products/5000_mtr_3_ply.png'
 import product4 from '../assets/Products/20_tube_180_mtr_2_ply.png'
-import product5 from '../assets/Products/100_tube_180_mtr_2_ply.png'
-import product6 from '../assets/Products/130_mtr_3_ply.png'
+
 
 
 const fadeInUp = keyframes`
@@ -82,13 +82,37 @@ const ProductName = styled.h4`
   }
 `;
 
+const ViewAllWrapper = styled.div`
+  margin-top: 2rem;
+`;
+
+const StyledLink = styled(Link)`
+  text-decoration: none;
+`;
+
+const ViewAllButton = styled.button`
+  background: linear-gradient(135deg, #6a11cb 0%, #2575fc 100%);
+  color: white;
+  padding: 0.8rem 2rem;
+  border: none;
+  border-radius: 30px;
+  font-size: 1rem;
+  font-family: 'Poppins', sans-serif;
+  cursor: pointer;
+  transition: background 0.3s ease, transform 0.2s ease;
+
+  &:hover {
+    background: linear-gradient(135deg, #2575fc 0%, #6a11cb 100%);
+    transform: scale(1.05);
+  }
+`;
+
+
 const products = [
   { name: '10000 MTR 2-Ply', image: product1 },
   { name: '2000 MTR 2-Ply', image: product2 },
   { name: '5000 MTR 3-Ply', image: product3 },
   { name: '20 Tube 180 MTR 2-Ply', image: product4 },
-  { name: '100 Tube 180 MTR 3-Ply', image: product5 },
-  { name: '130 MTR 3-Ply', image: product6 },
 ];
 
 const Products: React.FC = () => {
@@ -103,6 +127,11 @@ const Products: React.FC = () => {
           </ProductCard>
         ))}
       </ProductGrid>
+      <ViewAllWrapper>
+        <StyledLink to="/products">
+          <ViewAllButton>View All Products</ViewAllButton>
+        </StyledLink>
+      </ViewAllWrapper>
     </ProductsContainer>
   );
 };

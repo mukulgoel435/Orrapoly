@@ -52,6 +52,7 @@ const Footer: React.FC = () => {
         </FooterColumn>
 
         <FooterColumn>
+          
           <FooterTitle>Manufacturing Unit</FooterTitle>
           <FooterItem>📍 Plot No. 105-106 IIDC Sidcul, Haridwar, Uttarakhand, India</FooterItem>
           <FooterItem>GST No: 09ABCDE1234F1Z5</FooterItem>
