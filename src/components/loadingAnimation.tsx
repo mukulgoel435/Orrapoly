@@ -37,16 +37,21 @@ const LoadingContainer = styled.div`
 `;
 
 const LogoContainer = styled.div`
+  position: relative; /* Add relative positioning for the typing text to overlap */
   animation: ${fadeIn} 2s ease-out;
 `;
 
 const LogoImage = styled.img`
   width: 200px; /* Bigger logo size */
   height: auto;
-  margin-bottom: 20px;
+  margin-bottom: 70px;
 `;
 
 const TypingText = styled.h2`
+  position: absolute; /* Position it over the logo */
+  top: 50%; /* Center vertically */
+  left: 50%; /* Center horizontally */
+  transform: translate(-50%, -50%); /* Center the text perfectly */
   font-family: 'Poppins', sans-serif;
   font-size: 1.8rem; /* Larger text size */
   color: #ffffff;
@@ -54,8 +59,7 @@ const TypingText = styled.h2`
   overflow: hidden;
   border-right: 3px solid #3498db; /* Cursor effect */
   width: 0;
-  animation: ${typingEffect} 0.8s steps(18) 0.8s forwards, ${fadeIn} 1s ease-out;
- 
+  animation: ${typingEffect} 0.8s steps(18) 0s infinite, ${fadeIn} 1s ease-out;
 `;
 
 const LoadingAnimation = () => {
@@ -63,8 +67,8 @@ const LoadingAnimation = () => {
     <LoadingContainer>
       <LogoContainer>
         <LogoImage src={Logo} alt="Orrapoly Logo" />
+        <TypingText>Welcome to Orrapoly</TypingText> {/* The typing effect text */}
       </LogoContainer>
-      <TypingText>Welcome to Orrapoly</TypingText> {/* The typing effect text */}
     </LoadingContainer>
   );
 };

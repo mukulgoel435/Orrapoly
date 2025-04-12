@@ -170,13 +170,13 @@ const NavbarWithSidebar: React.FC = () => {
         >
           Applications
         </Link>
-        <a
-          href="/contact"
+        <Link
+          to="/contact"
           onClick={() => { setActiveLink('/contact'); setSidebarOpen(false); }}
           className={activeLink === '/contact' ? 'active' : ''}
         >
           Contact Us
-        </a>
+        </Link>
       </Sidebar>
     </>
   );
