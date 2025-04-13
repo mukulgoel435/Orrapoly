@@ -143,7 +143,7 @@ const ShadeCard = () => {
       <div style={{ marginTop: '3rem', textAlign: 'center' }}>
         <h3 style={{ marginBottom: '1rem', color: '#333' }}>📄 Download Full Shade Card</h3>
         <a
-          href="/shade-card.pdf" // Make sure this PDF is in your public/ folder
+          href="/shade-Card.pdf" 
           download
           target="_blank"
           rel="noopener noreferrer"
