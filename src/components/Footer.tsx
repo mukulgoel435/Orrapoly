@@ -119,7 +119,7 @@ const Footer: React.FC = () => {
           <span>🏠</span>
           Home
         </FooterLink>
-        <FooterLink to="/about" title="About Us">
+        <FooterLink to="/aboutus" title="About Us">
           <span>ℹ️</span>
           About Us
         </FooterLink>
