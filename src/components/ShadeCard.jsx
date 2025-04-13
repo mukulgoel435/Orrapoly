@@ -24,15 +24,10 @@ const typingTexts = [
   'Discover Shades Woven with Style',
 ];
 
-
-
-// ✅ Fixed: This now returns JSX and works properly
 const TypewriterHeader = () => {
   const [textIndex, setTextIndex] = useState(0);
   const [displayText, setDisplayText] = useState('');
   const [isDeleting, setIsDeleting] = useState(false);
-
-  
 
   useEffect(() => {
     const currentText = typingTexts[textIndex];
@@ -57,7 +52,7 @@ const TypewriterHeader = () => {
 
   return (
     <h2 className="typewriter-heading">
-    🎨 {displayText}
+      🎨 {displayText}
     </h2>
   );
 };
@@ -88,7 +83,6 @@ const ShadeCard = () => {
       alignItems: 'center',
       padding: '2rem',
     }}>
-      {/* ✅ Correct usage of typewriter header */}
       <TypewriterHeader />
 
       <div style={{
@@ -144,6 +138,31 @@ const ShadeCard = () => {
           Selected Shade: <strong>{selected}</strong>
         </p>
       )}
+
+      {/* 👇 PDF Download Section */}
+      <div style={{ marginTop: '3rem', textAlign: 'center' }}>
+        <h3 style={{ marginBottom: '1rem', color: '#333' }}>📄 Download Full Shade Card</h3>
+        <a
+          href="/shade-card.pdf" // Make sure this PDF is in your public/ folder
+          download
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <button style={{
+            backgroundColor: '#ff7b00',
+            color: '#fff',
+            border: 'none',
+            padding: '0.75rem 1.5rem',
+            borderRadius: '8px',
+            fontSize: '1rem',
+            cursor: 'pointer',
+            boxShadow: '0 2px 8px rgba(0, 0, 0, 0.2)',
+            transition: 'background-color 0.3s ease'
+          }}>
+            📥 Download PDF
+          </button>
+        </a>
+      </div>
     </div>
   );
 };
