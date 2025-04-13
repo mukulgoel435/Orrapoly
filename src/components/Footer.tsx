@@ -103,14 +103,14 @@ const Footer: React.FC = () => {
       <FooterGrid>
         <FooterColumn>
           <FooterTitle>Contact Us</FooterTitle>
-          <FooterItem>📞 +91 6398963929</FooterItem>
-          <FooterItem>📧 jaidurgaind@gmail.com</FooterItem>
+          <FooterItem>📞 +91 9837050053</FooterItem>
+          <FooterItem>📧 sales.orrapoly@gmail.com</FooterItem>
         </FooterColumn>
 
         <FooterColumn>
           <FooterTitle>Manufacturing Unit</FooterTitle>
           <FooterItem>📍 Plot No. 105-106 IIDC Sidcul, Haridwar, Uttarakhand, India</FooterItem>
-          <FooterItem>GST No: 09ABCDE1234F1Z5</FooterItem>
+          <FooterItem>GST No: 05AATPG8449A1ZN</FooterItem>
         </FooterColumn>
       </FooterGrid>
 
