@@ -3,7 +3,7 @@ import { Canvas } from '@react-three/fiber';
 import { Environment } from '@react-three/drei';
 import { motion } from 'framer-motion';
 import styled from 'styled-components';
-import logo from '../assets/orrapolylogo.png';
+import logo from '../assets/orrapolylogo.webp';
 import background from '../assets/thread-background.jpg';
 import { Link } from 'react-router-dom';
 import NavbarWithSidebar from './NavbarWithSidebar';

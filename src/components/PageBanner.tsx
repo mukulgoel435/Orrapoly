@@ -1,7 +1,7 @@
 // src/components/PageBanner.tsx
 import React from 'react';
 import styled from 'styled-components';
-import BannerImage from '../assets/ThreadBanner.png';
+import BannerImage from '../assets/threadbanner.webp';
 
 interface PageBannerProps {
   headingText: string;

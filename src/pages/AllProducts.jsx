@@ -6,7 +6,7 @@ import product2 from '../assets/Products/2000_mtr_2_ply.png';
 import product3 from '../assets/Products/5000_mtr_3_ply.png';
 import product4 from '../assets/Products/20_tube_180_mtr_2_ply.png';
 import product5 from '../assets/Products/100_tube_180_mtr_2_ply.png';
-import product6 from '../assets/Products/130_mtr_3_ply.jpeg';
+import product6 from '../assets/Products/130_mtr_3_ply.png';
 import product7 from '../assets/Products/800_mtr.png';
 import product8 from '../assets/Products/400_mtr_3_ply.png';
 import product9 from '../assets/Products/1000_mtr_3_ply.png';

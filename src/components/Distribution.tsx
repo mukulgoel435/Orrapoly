@@ -2,18 +2,18 @@ import React, { useState, useEffect, memo } from 'react';
 import styled from 'styled-components';
 
 // Import your images
-import haridwar from '../assets/haridwar.jpeg';
-import rishikesh from '../assets/Rishkesh.jpeg';
+import haridwar from '../assets/haridwar.webp';
+import rishikesh from '../assets/rishikesh.webp';
 import roorkee from '../assets/roorkee.jpg';
-import mirzapur from '../assets/Mirzapur.jpg';
-import fazilnagar from '../assets/Fazilnagar.jpg';
-import muzaffarnagar from '../assets/Muzaffarnagar.jpg';
-import ranchi from '../assets/Ranchi.jpg';
-import bihar from '../assets/BIhar.jpg';
-import jharkhand from '../assets/Jharkhand.jpg';
-import bareilly from '../assets/bareilly.jpg';
+import mirzapur from '../assets/mirzapur.webp';
+import fazilnagar from '../assets/fazilnagar.webp';
+import muzaffarnagar from '../assets/muzaffarnagar.webp';
+import ranchi from '../assets/ranchi.webp';
+import bihar from '../assets/bihar.webp';
+import jharkhand from '../assets/jharkhand.webp';
+import bareilly from '../assets/bareilly.webp';
 import rampur from '../assets/Rampur.jpg';
-import bombay from '../assets/Bombay.jpg';
+import bombay from '../assets/bombay.webp';
 
 const Container = styled.div`
   padding: 3rem 1rem;
