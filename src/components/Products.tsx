@@ -1,14 +1,12 @@
-// src/components/Products.tsx
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import styled, { keyframes } from 'styled-components';
 import { Link } from 'react-router-dom';
-import product1 from '../assets/Products/10000_mtr_2_ply.png'
-import product2 from '../assets/Products/2000_mtr_2_ply.png'
-import product3 from '../assets/Products/5000_mtr_3_ply.png'
-import product4 from '../assets/Products/20_tube_180_mtr_2_ply.png'
+import product1 from '../assets/Products/10000_mtr_2_ply.png';
+import product2 from '../assets/Products/2000_mtr_2_ply.png';
+import product3 from '../assets/Products/5000_mtr_3_ply.png';
+import product4 from '../assets/Products/20_tube_180_mtr_2_ply.png';
 
-
-
+// Keyframes for fadeIn animation
 const fadeInUp = keyframes`
   from {
     opacity: 0;
@@ -42,43 +40,55 @@ const ProductGrid = styled.div`
   margin: 0 auto;
 `;
 
-const ProductCard = styled.div`
-  background: white;
+const ProductCardContainer = styled.div`
+  background: #ffffff;
   border-radius: 16px;
-  padding: 2rem 1rem;
-  box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+  overflow: hidden;
+  padding: 0;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.08);
   transition: all 0.3s ease;
   display: flex;
   flex-direction: column;
-  align-items: center;
+  border: 1px solid #e5e7eb;
   animation: ${fadeInUp} 0.8s ease forwards;
   transform: translateY(10px);
   opacity: 0;
 
   &:hover {
-    transform: translateY(-10px) scale(1.03);
-    box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+    transform: translateY(-6px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.12);
   }
 `;
 
-
-const ProductImage = styled.img`
-  width: 100%;
+const ProductImage = styled.div`
   height: 180px;
-  object-fit: contain;
-  border-radius: 12px;
-  margin-top: 10px;
+  background-color: #f9fafb;
+  padding: 1.5rem;
+  border-bottom: 1px solid #f1f1f1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 `;
 
-const ProductName = styled.h4`
-  margin-top: 1rem;
-  font-size: 1.2rem;
+const Img = styled.img`
+  max-height: 100%;
+  max-width: 100%;
+  object-fit: contain;
+`;
+
+const ProductName = styled.div`
+  padding: 1rem;
+  font-weight: 600;
+  font-size: 1rem;
+  color: #1f2937;
+  text-align: center;
   font-family: 'Poppins', sans-serif;
-  color: #333;
+  letter-spacing: 0.3px;
+  background-color: #ffffff;
   transition: color 0.3s ease;
 
-  ${ProductCard}:hover & {
-    color: #6a11cb;
+  ${ProductCardContainer}:hover & {
+    color: #0077cc;
   }
 `;
 
@@ -107,7 +117,6 @@ const ViewAllButton = styled.button`
   }
 `;
 
-
 const products = [
   { name: '10000 MTR 2-Ply', image: product1 },
   { name: '2000 MTR 2-Ply', image: product2 },
@@ -116,15 +125,56 @@ const products = [
 ];
 
 const Products: React.FC = () => {
+  const [inView, setInView] = useState<boolean[]>(new Array(products.length).fill(false));
+
+  useEffect(() => {
+    const options = {
+      root: null, // viewport
+      rootMargin: '0px',
+      threshold: 0.1, // Trigger when 10% of the product is visible
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry, index) => {
+        if (entry.isIntersecting) {
+          setInView((prev) => {
+            const updated = [...prev];
+            updated[index] = true;
+            return updated;
+          });
+        }
+      });
+    }, options);
+
+    const cards = document.querySelectorAll('.product-card');
+    cards.forEach((card) => {
+      observer.observe(card);
+    });
+
+    return () => {
+      observer.disconnect();
+    };
+  }, []);
+
   return (
     <ProductsContainer>
       <Heading>Our Products</Heading>
       <ProductGrid>
         {products.map((product, index) => (
-          <ProductCard key={index} style={{ animationDelay: `${index * 0.2}s` }}>
-            <ProductImage src={product.image} alt={product.name} />
+          <ProductCardContainer
+            key={index}
+            className="product-card"
+            style={{ animationDelay: `${index * 0.2}s` }}
+          >
+            <ProductImage>
+              <Img
+                src={inView[index] ? product.image : ''}
+                alt={product.name}
+                loading="lazy" // Lazy load the image
+              />
+            </ProductImage>
             <ProductName>{product.name}</ProductName>
-          </ProductCard>
+          </ProductCardContainer>
         ))}
       </ProductGrid>
       <ViewAllWrapper>

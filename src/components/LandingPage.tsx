@@ -1,4 +1,4 @@
-import React, { Suspense, useState, useEffect } from 'react';
+import React, { Suspense, useState, useEffect, useCallback } from 'react';
 import { Canvas } from '@react-three/fiber';
 import { Environment } from '@react-three/drei';
 import { motion } from 'framer-motion';
@@ -116,12 +116,10 @@ const ScrollIndicator = styled(motion.div)`
 `;
 
 const LandingPage: React.FC = () => {
-  const [scrollY, setScrollY] = useState(0);
   const [typedText, setTypedText] = useState('');
   const [index, setIndex] = useState(0);
   const [charIdx, setCharIdx] = useState(0);
   const [isDeleting, setIsDeleting] = useState(false);
-  const [sidebarOpen, setSidebarOpen] = useState(false);
 
   const phrases = [
     'Precision in Every Strand, Excellence in Every Roll',
@@ -129,11 +127,12 @@ const LandingPage: React.FC = () => {
     'Delivering Quality You Can Feel',
   ];
 
+  // Optimized typing effect with useEffect and requestAnimationFrame
   useEffect(() => {
     const currentPhrase = phrases[index];
     const speed = isDeleting ? 30 : 80;
 
-    const timeout = setTimeout(() => {
+    const typing = () => {
       if (isDeleting) {
         setTypedText(currentPhrase.substring(0, charIdx - 1));
         setCharIdx(charIdx - 1);
@@ -150,19 +149,22 @@ const LandingPage: React.FC = () => {
         setIsDeleting(false);
         setIndex((prev) => (prev + 1) % phrases.length);
       }
-    }, speed);
-
-    return () => clearTimeout(timeout);
-  }, [charIdx, isDeleting]);
-
-  useEffect(() => {
-    const handleScroll = () => {
-      setScrollY(window.scrollY);
     };
 
+    const interval = setInterval(typing, speed);
+    return () => clearInterval(interval);
+  }, [charIdx, isDeleting]);
+
+  const [scrollY, setScrollY] = useState(0);
+
+  const handleScroll = useCallback(() => {
+    setScrollY(window.scrollY);
+  }, []);
+
+  useEffect(() => {
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
+  }, [handleScroll]);
 
   const handleScrollDown = () => {
     window.scrollTo({

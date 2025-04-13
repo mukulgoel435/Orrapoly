@@ -1,8 +1,7 @@
 import React from 'react';
 import styled, { keyframes } from 'styled-components';
-import Logo from '../assets/orrapolylogo.png'; // Replace this with the path to your actual logo image
+import Logo from '../assets/orrapolylogo.png'; 
 
-// Keyframe animations
 const typingEffect = keyframes`
   0% {
     width: 0;
@@ -27,7 +26,7 @@ const LoadingContainer = styled.div`
   left: 0;
   width: 100vw;
   height: 100vh;
-  background: #1f1f1f; /* Dark background for contrast */
+  background: #1f1f1f; 
   display: flex;
   justify-content: center;
   align-items: center;
@@ -37,29 +36,28 @@ const LoadingContainer = styled.div`
 `;
 
 const LogoContainer = styled.div`
-  position: relative; /* Add relative positioning for the typing text to overlap */
-  animation: ${fadeIn} 2s ease-out;
+  display: flex;
+  flex-direction: column; 
+  justify-content: center;
+  align-items: center;
+  animation: ${fadeIn} 3s ease-out; 
 `;
 
 const LogoImage = styled.img`
-  width: 200px; /* Bigger logo size */
+  width: 200px; 
   height: auto;
-  margin-bottom: 70px;
+  margin-bottom: 20px; 
 `;
 
 const TypingText = styled.h2`
-  position: absolute; /* Position it over the logo */
-  top: 50%; /* Center vertically */
-  left: 50%; /* Center horizontally */
-  transform: translate(-50%, -50%); /* Center the text perfectly */
   font-family: 'Poppins', sans-serif;
-  font-size: 1.8rem; /* Larger text size */
+  font-size: 1.8rem; 
   color: #ffffff;
   white-space: nowrap;
   overflow: hidden;
-  border-right: 3px solid #3498db; /* Cursor effect */
+  border-right: 3px solid #3498db; 
   width: 0;
-  animation: ${typingEffect} 0.8s steps(18) 0s infinite, ${fadeIn} 1s ease-out;
+  animation: ${typingEffect} 2s steps(18) infinite, ${fadeIn} 1s ease-out; 
 `;
 
 const LoadingAnimation = () => {
@@ -67,7 +65,7 @@ const LoadingAnimation = () => {
     <LoadingContainer>
       <LogoContainer>
         <LogoImage src={Logo} alt="Orrapoly Logo" />
-        <TypingText>Welcome to Orrapoly</TypingText> {/* The typing effect text */}
+        <TypingText>Welcome to Orrapoly....</TypingText> 
       </LogoContainer>
     </LoadingContainer>
   );

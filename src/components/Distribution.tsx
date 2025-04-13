@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, memo } from 'react';
 import styled from 'styled-components';
 
 // Import your images
@@ -59,7 +59,7 @@ const SliderWrapper = styled.div`
   margin: 0 auto;
   overflow: hidden;
   border-radius: 16px;
-  box-shadow: 0 8px 30px rgba(0,0,0,0.2);
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2);
 `;
 
 const Slide = styled.div<{ active: boolean }>`
@@ -76,8 +76,16 @@ const Image = styled.img`
   height: 350px;
   object-fit: cover;
   border-radius: 16px;
+  loading: lazy;
 `;
 
+// Memoizing the Slide component for optimization
+const MemoizedSlide = memo(({ location, active }: { location: { name: string, image: string }, active: boolean }) => (
+  <Slide active={active}>
+    <Image src={location.image} alt={location.name} />
+    <Label>{location.name}</Label>
+  </Slide>
+));
 
 const locations = [
   { name: 'Haridwar', image: haridwar },
@@ -109,10 +117,7 @@ const Distribution: React.FC = () => {
       <Heading>Distribution in India</Heading>
       <SliderWrapper>
         {locations.map((location, index) => (
-          <Slide key={index} active={index === currentIndex}>
-            <Image src={location.image} alt={location.name} />
-            <Label>{location.name}</Label>
-          </Slide>
+          <MemoizedSlide key={index} location={location} active={index === currentIndex} />
         ))}
       </SliderWrapper>
     </Container>

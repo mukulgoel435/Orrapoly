@@ -18,27 +18,7 @@ const AppContainer = styled.div`
 `;
 
 const App = () => {
-  const [loading, setLoading] = useState(true);
-
-  useEffect(() => {
-    const handleWindowLoad = () => {
-      setLoading(false); 
-    };
-    const timeout = setTimeout(() => {
-      setLoading(false);
-    }, 3000); 
-   
-    window.onload = handleWindowLoad;
-
-    return () => {
-      window.removeEventListener('load', handleWindowLoad);
-      clearTimeout(timeout);
-    };
-  }, []);
-
-  if (loading) {
-    return <LoadingAnimation />;
-  }
+  
 
   return (
     <Router>

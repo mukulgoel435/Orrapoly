@@ -1,5 +1,4 @@
-// src/pages/Products.tsx
-import React from 'react';
+import React, { Suspense, lazy } from 'react';
 import styled from 'styled-components';
 import NavbarWithSidebar from '../components/NavbarWithSidebar';
 import product1 from '../assets/Products/10000_mtr_2_ply.png';
@@ -10,10 +9,13 @@ import product5 from '../assets/Products/100_tube_180_mtr_2_ply.png';
 import product6 from '../assets/Products/130_mtr_3_ply.jpeg';
 import product7 from '../assets/Products/800_mtr.png';
 import product8 from '../assets/Products/400_mtr_3_ply.png';
-import product9 from '../assets/Products/1000_mtr_3_ply.png'
-import product10 from '../assets/Products/300_mtr_2_ply.png'
+import product9 from '../assets/Products/1000_mtr_3_ply.png';
+import product10 from '../assets/Products/300_mtr_2_ply.png';
 import PageBanner from '../components/PageBanner';
 import Footer from '../components/Footer';
+
+// Lazy load ProductCard component
+const ProductCard = lazy(() => import('../components/ProductCard'));
 
 const ProductsContainer = styled.div`
   min-height: 100vh;
@@ -35,61 +37,6 @@ const ProductGrid = styled.div`
   margin: 0 auto;
 `;
 
-const ProductCard = styled.div`
-  background: #ffffff;
-  border-radius: 16px;
-  overflow: hidden;
-  padding: 0;
-  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.08);
-  transition: all 0.3s ease;
-  display: flex;
-  flex-direction: column;
-  border: 1px solid #e5e7eb;
-
-  &:hover {
-    transform: translateY(-6px);
-    box-shadow: 0 10px 20px rgba(0,0,0,0.12);
-  }
-`;
-
-const ProductImage = styled.div`
-  height: 180px;
-  background-color: #f9fafb;
-  padding: 1.5rem;
-  border-bottom: 1px solid #f1f1f1;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-`;
-
-const Img = styled.img`
-  max-height: 100%;
-  max-width: 100%;
-  object-fit: contain;
-`;
-
-const ProductName = styled.div`
-  padding: 1rem;
-  font-weight: 600;
-  font-size: 1rem;
-  color: #1f2937;
-  text-align: center;
-  font-family: 'Poppins', sans-serif;
-  letter-spacing: 0.3px;
-  background-color: #ffffff;
-  transition: color 0.3s ease;
-
-  ${ProductCard}:hover & {
-    color: #0077cc;
-  }
-`;
-
-const ProductPrice = styled.div`
-  font-size: 0.9rem;
-  color: #4b5563;
-  margin-top: 0.5rem;
-`;
-
 const products = [
   { name: '10000 MTR 2-Ply', image: product1 },
   { name: '2000 MTR 2-Ply', image: product2 },
@@ -109,20 +56,18 @@ const AllProducts = () => {
       <NavbarWithSidebar />
       <PageBanner headingText="Explore Our Products" />
 
-        <ProductContainer>
-          <ProductGrid>
+      <ProductContainer>
+        <ProductGrid>
+          {/* Suspense to handle loading state of lazy-loaded components */}
+          <Suspense fallback={<div>Loading products...</div>}>
             {products.map((product, index) => (
-              <ProductCard key={index}>
-              <ProductImage>
-                <Img src={product.image} alt={product.name} />
-              </ProductImage>
-                <ProductName>{product.name}</ProductName>
-                </ProductCard>
-            
+              <ProductCard key={index} product={product} />
             ))}
-          </ProductGrid>
-        </ProductContainer>
-        <Footer />
+          </Suspense>
+        </ProductGrid>
+      </ProductContainer>
+
+      <Footer />
     </ProductsContainer>
   );
 };
