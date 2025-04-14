@@ -11,6 +11,7 @@ import AboutUS from '../src/pages/AboutUs';
 import Applications from '../src/pages/Applications';
 import Contact from '../src/pages/Contact';
 import LoadingAnimation from './components/loadingAnimation';
+import { Analytics } from '@vercel/analytics/react';
 
 const AppContainer = styled.div`
   font-family: 'Arial, sans-serif';
@@ -18,8 +19,6 @@ const AppContainer = styled.div`
 `;
 
 const App = () => {
-  
-
   return (
     <Router>
       <Routes>
@@ -37,6 +36,7 @@ const App = () => {
         <Route path="/applications" element={<Applications />} />
         <Route path="/contact" element={<Contact />} />
       </Routes>
+      <Analytics />
     </Router>
   );
 };
