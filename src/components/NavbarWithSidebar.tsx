@@ -8,7 +8,7 @@ const Navbar = styled.nav`
   width: 100%;
   padding: 1rem 2rem;
   box-sizing: border-box;
-  background-color: rgba(0, 0, 0, 0.6);
+  background-color: #1f1f1f;
   color: white;
   display: flex;
   justify-content: space-between;
@@ -28,7 +28,7 @@ const Navbar = styled.nav`
     a {
       color: white;
       text-decoration: none;
-      font-weight: 500;
+      font-weight: 800;
       transition: color 0.3s;
 
       &:hover {
@@ -75,6 +75,7 @@ const Sidebar = styled.div<{ open: boolean }>`
     align-self: flex-end;
     font-size: 1.8rem;
     cursor: pointer;
+    font-weight: 800;
   }
 
   a {
@@ -82,6 +83,7 @@ const Sidebar = styled.div<{ open: boolean }>`
     margin: 1rem 0;
     text-decoration: none;
     font-size: 1.2rem;
+    font-weight: 800;
     transition: color 0.3s;
 
     &:hover {
@@ -109,7 +111,7 @@ const NavbarWithSidebar: React.FC = () => {
     <>
       <Navbar>
         <Logo>
-          <Link to="/" style={{ color: 'white', textDecoration: 'none' }}>
+          <Link to="/" style={{ color: '#fff', textDecoration: 'none' }}>
             ORRAPOLY
           </Link>
         </Logo>

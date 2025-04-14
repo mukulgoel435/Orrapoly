@@ -11,10 +11,17 @@ const ProductCardContainer = styled.div`
   display: flex;
   flex-direction: column;
   border: 1px solid #e5e7eb;
+  width: 100%;
+  max-width: 320px;
 
   &:hover {
     transform: translateY(-6px);
     box-shadow: 0 10px 20px rgba(0,0,0,0.12);
+  }
+
+  @media (max-width: 480px) {
+    max-width: 100%;
+    border-radius: 12px;
   }
 `;
 
@@ -26,6 +33,11 @@ const ProductImage = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
+
+  @media (max-width: 480px) {
+    height: 140px;
+    padding: 1rem;
+  }
 `;
 
 const Img = styled.img`
@@ -47,6 +59,11 @@ const ProductName = styled.div`
 
   ${ProductCardContainer}:hover & {
     color: #0077cc;
+  }
+
+  @media (max-width: 480px) {
+    font-size: 0.95rem;
+    padding: 0.75rem;
   }
 `;
 

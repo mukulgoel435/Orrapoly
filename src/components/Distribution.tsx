@@ -22,29 +22,22 @@ const Container = styled.div`
 `;
 
 const Label = styled.p`
-  margin-top: 1rem;
-  font-size: 1.5rem;
+  height: 15%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0;
+  font-size: 1.2rem;
   font-weight: 700;
   font-family: 'Poppins', sans-serif;
   text-transform: uppercase;
-  letter-spacing: 2px;
+  letter-spacing: 1px;
   background: linear-gradient(45deg, #ff6ec4, #7873f5);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
-  animation: fadeInUp 0.8s ease-in-out;
-
-  @keyframes fadeInUp {
-    from {
-      opacity: 0;
-      transform: translateY(10px);
-    }
-    to {
-      opacity: 1;
-      transform: translateY(0);
-    }
-  }
 `;
+
 
 const Heading = styled.h2`
   font-size: 2.5rem;
@@ -55,29 +48,47 @@ const Heading = styled.h2`
 
 const SliderWrapper = styled.div`
   position: relative;
+  width: 100%;
   max-width: 600px;
+  height: 400px;
   margin: 0 auto;
   overflow: hidden;
   border-radius: 16px;
   box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2);
+
+  @media (max-width: 768px) {
+    height: 300px;
+  }
 `;
 
+
 const Slide = styled.div<{ active: boolean }>`
-  display: ${(props) => (props.active ? 'block' : 'none')};
+  display: ${(props) => (props.active ? 'flex' : 'none')};
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
   animation: fadeIn 1s ease-in-out;
+
   @keyframes fadeIn {
     from { opacity: 0; }
     to { opacity: 1; }
   }
 `;
 
+
 const Image = styled.img`
   width: 100%;
-  height: 350px;
+  height: 85%;
   object-fit: cover;
-  border-radius: 16px;
-  loading: lazy;
+  border-radius: 16px 16px 0 0;
+
+  @media (max-width: 768px) {
+    height: 80%;
+  }
 `;
+
 
 // Memoizing the Slide component for optimization
 const MemoizedSlide = memo(({ location, active }: { location: { name: string, image: string }, active: boolean }) => (

@@ -64,10 +64,20 @@ const ContactForm = styled.form`
   max-width: 600px;
   margin: 0 auto;
   text-align: left;
+
+  @media (max-width: 480px) {
+  margin-left : 0.5rem;
+    margin-right: 2.5rem;
+  }
 `;
+
 
 const FormGroup = styled.div`
   margin-bottom: 1.5rem;
+
+  @media (max-width: 480px) {
+    margin-bottom: 1.25rem; // Reduce bottom margin for mobile devices
+  }
 `;
 
 const Label = styled.label`
@@ -81,12 +91,15 @@ const Label = styled.label`
   }
 `;
 
-
 const Input = styled.input`
   width: 100%;
   padding: 0.75rem;
   border-radius: 8px;
   border: 1px solid #ccc;
+
+  @media (max-width: 480px) {
+    padding: 0.75rem 1rem; // Add padding to the left and right for better alignment
+  }
 `;
 
 const Textarea = styled.textarea`
@@ -94,10 +107,14 @@ const Textarea = styled.textarea`
   padding: 0.75rem;
   border-radius: 8px;
   border: 1px solid #ccc;
+
+  @media (max-width: 480px) {
+    padding: 0.75rem 1rem; // Add padding to the left and right for better alignment
+  }
 `;
 
 const Rating = styled.div`
-  font-size: 1.5rem;
+  font-size: 2.5rem;
   color: gold;
 `;
 
@@ -134,7 +151,7 @@ const Contact = () => {
             WhatsApp Us
           </ContactButton>
           <ContactButton
-            href="mailto:jaidurgaind@gmail.com"
+            href="mailto:sales.orrapoly@gmail.com"
             className="email"
           >
             Email Us

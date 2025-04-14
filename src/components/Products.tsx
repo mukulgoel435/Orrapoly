@@ -168,7 +168,7 @@ const Products: React.FC = () => {
           >
             <ProductImage>
               <Img
-                src={inView[index] ? product.image : ''}
+                src={product.image}
                 alt={product.name}
                 loading="lazy" // Lazy load the image
               />
@@ -179,7 +179,7 @@ const Products: React.FC = () => {
       </ProductGrid>
       <ViewAllWrapper>
         <StyledLink to="/products">
-          <ViewAllButton>View All Products</ViewAllButton>
+          <ViewAllButton style={{ fontWeight: '800' }}>View All Products</ViewAllButton>
         </StyledLink>
       </ViewAllWrapper>
     </ProductsContainer>
