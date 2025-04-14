@@ -12,6 +12,7 @@ import Applications from '../src/pages/Applications';
 import Contact from '../src/pages/Contact';
 import LoadingAnimation from './components/loadingAnimation';
 import { Analytics } from '@vercel/analytics/react';
+import { SpeedInsights } from "@vercel/speed-insights/react"
 
 const AppContainer = styled.div`
   font-family: 'Arial, sans-serif';
@@ -37,6 +38,7 @@ const App = () => {
         <Route path="/contact" element={<Contact />} />
       </Routes>
       <Analytics />
+      <SpeedInsights />
     </Router>
   );
 };
