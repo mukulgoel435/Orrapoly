@@ -11,6 +11,7 @@ import product7 from '../assets/Products/800_mtr.png';
 import product8 from '../assets/Products/400_mtr_3_ply.png';
 import product9 from '../assets/Products/1000_mtr_3_ply.png';
 import product10 from '../assets/Products/300_mtr_2_ply.png';
+import product11 from '../assets/Products/135_mtr_3_ply.png';
 import PageBanner from '../components/PageBanner';
 import Footer from '../components/Footer';
 
@@ -42,12 +43,13 @@ const products = [
   { name: '2000 MTR 2-Ply', image: product2 },
   { name: '5000 MTR 3-Ply', image: product3 },
   { name: '20 Tube 180 MTR 2-Ply', image: product4 },
-  { name: '100 Tube 180 MTR 3-Ply', image: product5 },
-  { name: '130 MTR 3-Ply', image: product6 },
+  { name: '180 MTR 3-Ply - 100 Tube', image: product5 },
+  { name: '130 MTR 3-Ply - 20 Tube', image: product6 },
   { name: '300 MTR 2-Ply', image: product10 },
-  { name: '800 MTR 2-Ply', image: product7 },
+  { name: '800 MTR 2-Ply - 10 Tube', image: product7 },
   { name: '400 MTR 3-Ply', image: product8 },
-  { name: '1000 MTR 3-Ply', image: product9 },
+  { name: '1000 MTR 3-Ply - 10 Tube', image: product9 },
+  { name: '135 MTR 3-Ply - 100 Tube', image: product11 },
 ];
 
 const AllProducts = () => {
