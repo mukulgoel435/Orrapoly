@@ -101,7 +101,7 @@ const StyledLink = styled(Link)`
 `;
 
 const ViewAllButton = styled.button`
-  background: linear-gradient(135deg, #6a11cb 0%, #2575fc 100%);
+  background: linear-gradient(135deg,rgb(21, 111, 45) 0%,rgb(51, 220, 66) 100%);
   color: white;
   padding: 0.8rem 2rem;
   border: none;

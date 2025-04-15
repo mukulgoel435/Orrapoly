@@ -1,6 +1,16 @@
-import React, { useState } from 'react';
+import React, { useState,useEffect } from 'react';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { useLocation } from 'react-router-dom';
+import {
+  faInfoCircle,
+  faBoxOpen,
+  faThList,
+  faEnvelope,
+  faXmark,
+  faHouse
+} from '@fortawesome/free-solid-svg-icons';
 
 const Navbar = styled.nav`
   position: absolute;
@@ -32,11 +42,11 @@ const Navbar = styled.nav`
       transition: color 0.3s;
 
       &:hover {
-        color: #ffd700;
+        color: rgb(60, 199, 55);
       }
 
       &.active {
-        color: #ffd700;
+        color: rgb(60, 199, 55);
       }
     }
 
@@ -61,37 +71,55 @@ const Sidebar = styled.div<{ open: boolean }>`
   top: 0;
   right: ${({ open }) => (open ? '0' : '-100%')};
   height: 100vh;
-  width: 250px;
-  background-color: rgba(0, 0, 0, 0.9);
+  width: 260px;
+  background-color: #11101d;
   color: white;
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
   padding: 2rem 1.5rem;
   transition: right 0.3s ease-in-out;
   z-index: 999;
 
-  .close {
-    align-self: flex-end;
-    font-size: 1.8rem;
-    cursor: pointer;
-    font-weight: 800;
+  .header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 2rem;
+
+    .title {
+      font-size: 1.4rem;
+      font-weight: 800;
+      color: #fff;
+    }
+
+    .close {
+      font-size: 1rem;
+      cursor: pointer;
+      color: white;
+    }
   }
 
   a {
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+    width: 100%;
+    padding: 1rem 1.2rem;
+    margin-bottom: 1rem;
+    border-radius: 8px;
     color: white;
-    margin: 1rem 0;
+    font-size: 1.1rem;
+    font-weight: 700;
     text-decoration: none;
-    font-size: 1.2rem;
-    font-weight: 800;
-    transition: color 0.3s;
-
-    &:hover {
-      color: #ffd700;
-    }
+    transition: all 0.3s ease-in-out;
 
     &.active {
-      color: #ffd700;
+      background-color:rgb(60, 199, 55);
+      color: #11101d;
+    }
+
+    svg {
+      font-size: 1.2rem;
     }
   }
 `;
@@ -105,14 +133,20 @@ const Logo = styled.div`
 
 const NavbarWithSidebar: React.FC = () => {
   const [sidebarOpen, setSidebarOpen] = useState(false);
-  const [activeLink, setActiveLink] = useState<string>('');
+  const location = useLocation();
+  const [activeLink, setActiveLink] = useState<string>(location.pathname);
+
+  useEffect(() => {
+    setActiveLink(location.pathname);
+  }, [location.pathname]);
+
 
   return (
     <>
       <Navbar>
         <Logo>
           <Link to="/" style={{ color: '#fff', textDecoration: 'none' }}>
-            ORRAPOLY
+            <span style={{ color: 'rgb(60, 199, 55)' }}>ORRA</span><span style={{ color: '#ffffff' }}>POLY</span>
           </Link>
         </Logo>
         <div className="menu">
@@ -137,7 +171,6 @@ const NavbarWithSidebar: React.FC = () => {
           >
             Applications
           </Link>
-            
           <Link
             to="/contact"
             onClick={() => setActiveLink('/contact')}
@@ -150,34 +183,46 @@ const NavbarWithSidebar: React.FC = () => {
       </Navbar>
 
       <Sidebar open={sidebarOpen}>
-        <div className="close" onClick={() => setSidebarOpen(false)}>×</div>
+        <div className="header">
+          <div className="title">Menu</div>
+          <div className="close" onClick={() => setSidebarOpen(false)}><FontAwesomeIcon icon={faXmark} size="2x" /></div>
+        </div>
+        
+        <Link
+          to="/"
+          onClick={() => { setActiveLink('/'); setSidebarOpen(false); }}
+          className={activeLink === '/' ? 'active' : ''}
+        >
+          <FontAwesomeIcon icon={faHouse} size="2x" /> Home
+        </Link>
+
         <Link
           to="/aboutus"
           onClick={() => { setActiveLink('/aboutus'); setSidebarOpen(false); }}
           className={activeLink === '/aboutus' ? 'active' : ''}
         >
-          About Us
+          <FontAwesomeIcon icon={faInfoCircle} size="2x" /> About Us
         </Link>
         <Link
           to="/products"
           onClick={() => { setActiveLink('/products'); setSidebarOpen(false); }}
           className={activeLink === '/products' ? 'active' : ''}
         >
-          Products
+          <FontAwesomeIcon icon={faBoxOpen} size="2x" /> Products
         </Link>
         <Link
           to="/applications"
           onClick={() => { setActiveLink('/applications'); setSidebarOpen(false); }}
           className={activeLink === '/applications' ? 'active' : ''}
         >
-          Applications
+          <FontAwesomeIcon icon={faThList} size="2x" /> Applications
         </Link>
         <Link
           to="/contact"
           onClick={() => { setActiveLink('/contact'); setSidebarOpen(false); }}
           className={activeLink === '/contact' ? 'active' : ''}
         >
-          Contact Us
+          <FontAwesomeIcon icon={faEnvelope} size="2x" /> Contact
         </Link>
       </Sidebar>
     </>

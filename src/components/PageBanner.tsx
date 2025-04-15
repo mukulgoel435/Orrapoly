@@ -62,12 +62,12 @@ const BannerHeading = styled.h2`
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3); /* Optional: subtle shadow */
 
   @media (max-width: 768px) {
-    font-size: 2.5rem;
+    font-size: 2.2rem;
     padding: 0.75rem 1.5rem;
   }
 
   @media (max-width: 480px) {
-    font-size: 2.5rem;
+    font-size: 2.2rem;
     padding: 0.5rem 1rem;
   }
 `;
