@@ -1,7 +1,6 @@
 import React, { useState, useEffect, memo } from 'react';
 import styled from 'styled-components';
 
-// Import your images
 import haridwar from '../assets/haridwar.webp';
 import rishikesh from '../assets/rishikesh.webp';
 import roorkee from '../assets/roorkee.jpg';
@@ -14,6 +13,11 @@ import jharkhand from '../assets/jharkhand.webp';
 import bareilly from '../assets/bareilly.webp';
 import rampur from '../assets/Rampur.jpg';
 import bombay from '../assets/bombay.webp';
+import mau from '../assets/mau.jpg';
+import khushinagar from '../assets/khushinagar.webp';
+import deoband from '../assets/deoband.jpg';
+import faridpur from '../assets/faridpur.jpg';
+import basti from '../assets/basti.jpg';
 
 const Container = styled.div`
   padding: 3rem 1rem;
@@ -43,7 +47,6 @@ const Heading = styled.h2`
   font-size: 2.5rem;
   color: #1f1f1f;
   font-family: 'Poppins', sans-serif;
-  margin-bottom: 2rem;
 `;
 
 const SliderWrapper = styled.div`
@@ -104,13 +107,19 @@ const locations = [
   { name: 'Roorkee', image: roorkee },
   { name: 'Bareilly', image: bareilly },
   { name: 'Rampur', image: rampur },
-  { name: 'Bombay', image: bombay },
+  { name: 'Mumbai', image: bombay },
   { name: 'Ranchi', image: ranchi },
   { name: 'Bihar', image: bihar },
   { name: 'Jharkhand', image: jharkhand },
   { name: 'Muzaffarnagar', image: muzaffarnagar },
   { name: 'Fazilnagar', image: fazilnagar },
   { name: 'Mirzapur', image: mirzapur },
+  { name: 'Khushinagar', image: khushinagar },
+  { name: 'Deoband', image: deoband },
+  { name: 'Faridpur', image: faridpur },
+  { name: 'Basti', image: basti },
+  { name: 'Mau', image: mau },
+
 ];
 
 const Distribution: React.FC = () => {
@@ -126,6 +135,7 @@ const Distribution: React.FC = () => {
   return (
     <Container>
       <Heading>Distribution in India</Heading>
+      <h3 style={{color:'grey' , marginTop:-22, marginBottom:30}}>Serving 17+ Locations Across India</h3>
       <SliderWrapper>
         {locations.map((location, index) => (
           <MemoizedSlide key={index} location={location} active={index === currentIndex} />

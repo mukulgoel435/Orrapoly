@@ -13,6 +13,7 @@ import Contact from '../src/pages/Contact';
 import LoadingAnimation from './components/loadingAnimation';
 import { Analytics } from '@vercel/analytics/react';
 import { SpeedInsights } from "@vercel/speed-insights/react"
+import RequestCall from './components/RequestCall';
 
 const AppContainer = styled.div`
   font-family: 'Arial, sans-serif';
@@ -27,6 +28,7 @@ const App = () => {
           <>
             <LandingPage />
             <Distribution />
+            <RequestCall />
             <Products />
             <ShadeCard />
             <Footer />

@@ -141,7 +141,6 @@ const Footer: React.FC = () => {
       <FooterGrid>
         <FooterColumn>
           <FooterTitle>Contact Us</FooterTitle>
-          <FooterItem>📞 +91 9837050053</FooterItem>
           <FooterItem>📧 sales.orrapoly@gmail.com</FooterItem>
         </FooterColumn>
 

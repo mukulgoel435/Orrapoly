@@ -144,13 +144,6 @@ const Contact = () => {
       <ContactContainer>
         <ContactButtons>
           <ContactButton
-            href="https://wa.me/9837050053"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            WhatsApp Us
-          </ContactButton>
-          <ContactButton
             href="mailto:sales.orrapoly@gmail.com"
             className="email"
           >
