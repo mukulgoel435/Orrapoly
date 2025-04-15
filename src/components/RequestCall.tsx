@@ -11,8 +11,8 @@ const FormContainer = styled.div`
   backdrop-filter: blur(8px);
 
   @media (max-width: 768px) {
-    margin: 2rem 1rem; /* Adds left and right margin on smaller screens */
-    padding: 1.5rem 1rem; /* Less padding on small screens */
+    margin: 2rem 1rem; 
+    padding: 1.5rem 1rem; 
   }
 `;
 
@@ -109,7 +109,6 @@ const RequestCallForm = () => {
           <option value="5000 MTR 3-Ply">5000 MTR 3-Ply</option>
           <option value="10000 MTR 2-Ply">10000 MTR 2-Ply</option> 
           <option value="Custom Order">Custom Order</option>
-         
         </Select>
         <Input
           type="number"
@@ -119,8 +118,7 @@ const RequestCallForm = () => {
         />
         <Textarea
           name="description"
-          placeholder="Description*"
-          required
+          placeholder="Description"
         />
         <SubmitButton type="submit">Send</SubmitButton>
       </StyledForm>

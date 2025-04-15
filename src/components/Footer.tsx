@@ -157,6 +157,7 @@ const Footer: React.FC = () => {
         <FooterLink to="/contact" title="Contact"><span>📞</span>Contact</FooterLink>
         <FooterLink to="/applications" title="Applications"><span>🧵</span>Applications</FooterLink>
         <FooterLink to="/products" title="Products"><span>📦</span>Products</FooterLink>
+        <FooterLink to="/legal" title="Legal"><span>🔍</span>Privacy Policy & Disclaimer</FooterLink>
       </FooterLinks>
 
       {/* 🌐 Social Media Icons */}

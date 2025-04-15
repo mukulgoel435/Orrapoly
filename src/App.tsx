@@ -14,6 +14,7 @@ import LoadingAnimation from './components/loadingAnimation';
 import { Analytics } from '@vercel/analytics/react';
 import { SpeedInsights } from "@vercel/speed-insights/react"
 import RequestCall from './components/RequestCall';
+import Legal from './pages/Legal';
 
 const AppContainer = styled.div`
   font-family: 'Arial, sans-serif';
@@ -38,6 +39,7 @@ const App = () => {
         <Route path="/aboutus" element={<AboutUS />} />
         <Route path="/applications" element={<Applications />} />
         <Route path="/contact" element={<Contact />} />
+        <Route path="/legal" element={<Legal />} />
       </Routes>
       <Analytics />
       <SpeedInsights />
