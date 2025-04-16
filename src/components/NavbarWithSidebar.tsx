@@ -9,7 +9,8 @@ import {
   faThList,
   faEnvelope,
   faXmark,
-  faHouse
+  faHouse,
+  faNewspaper
 } from '@fortawesome/free-solid-svg-icons';
 
 const Navbar = styled.nav`
@@ -172,6 +173,13 @@ const NavbarWithSidebar: React.FC = () => {
             Applications
           </Link>
           <Link
+            to="/blog"
+            onClick={() => setActiveLink('/blog')}
+            className={activeLink === '/blog' ? 'active' : ''}
+          >
+            Blog
+          </Link>
+          <Link
             to="/contact"
             onClick={() => setActiveLink('/contact')}
             className={activeLink === '/contact' ? 'active' : ''}
@@ -216,6 +224,13 @@ const NavbarWithSidebar: React.FC = () => {
           className={activeLink === '/applications' ? 'active' : ''}
         >
           <FontAwesomeIcon icon={faThList} size="2x" /> Applications
+        </Link>
+        <Link
+          to="/blog"
+          onClick={() => { setActiveLink('/blog'); setSidebarOpen(false); }}
+          className={activeLink === '/blog' ? 'active' : ''}
+        >
+          <FontAwesomeIcon icon={faNewspaper} size="2x" /> Blog
         </Link>
         <Link
           to="/contact"
