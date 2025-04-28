@@ -152,7 +152,7 @@ const Contact = () => {
         </ContactButtons>
 
         <ContactForm
-          action="https://formspree.io/f/mnnpwdad"
+          action="https://formspree.io/f/myzwzaog"
           method="POST"
         >
           <FormGroup>

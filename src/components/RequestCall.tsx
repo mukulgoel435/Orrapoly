@@ -73,7 +73,7 @@ const RequestCallForm = () => {
     <FormContainer>
       <FormTitle>Request A Call</FormTitle>
       <StyledForm
-        action="https://formspree.io/f/mpwpnjqw"
+        action="https://formspree.io/f/mldbdkaq"
         method="POST"
       >
         <Input
@@ -87,6 +87,11 @@ const RequestCallForm = () => {
           type="text"
           name="company"
           placeholder="Your Company"
+        />
+        <Input
+          type="text"
+          name="Location"
+          placeholder="Location"
         />
         <Input
           type="tel"
